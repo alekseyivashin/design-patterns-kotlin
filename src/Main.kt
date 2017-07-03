@@ -1,6 +1,9 @@
 import observer.Data
 import observer.DataSubject
 import observer.DisplayData
+import strategy.Context
+import strategy.StrategyMinus
+import strategy.StrategyPlus
 
 /**
  * Created on : 03.07.2017
@@ -8,7 +11,7 @@ import observer.DisplayData
  */
 
 fun main(args: Array<String>) {
-    testObserver()
+    testStrategy()
 }
 
 fun testObserver() {
@@ -18,4 +21,14 @@ fun testObserver() {
     subject.newData(Data(24, "SPB"))
     subject.newData(Data(27, "KHV"))
     subject.newData(Data(4, "MSK"))
+}
+
+fun testStrategy() {
+    val context = Context()
+
+    context.strategy = StrategyPlus()
+    println(context.executeStrategy(3, 5))
+
+    context.strategy = StrategyMinus()
+    println(context.executeStrategy(3, 5))
 }
