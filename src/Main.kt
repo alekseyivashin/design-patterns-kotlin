@@ -1,3 +1,6 @@
+import decorator.Espresso
+import decorator.Foam
+import decorator.Milk
 import observer.Data
 import observer.DataSubject
 import observer.DisplayData
@@ -11,7 +14,7 @@ import strategy.StrategyPlus
  */
 
 fun main(args: Array<String>) {
-    testStrategy()
+    testDecorator()
 }
 
 fun testObserver() {
@@ -31,4 +34,9 @@ fun testStrategy() {
 
     context.strategy = StrategyMinus()
     println(context.executeStrategy(3, 5))
+}
+
+fun testDecorator() {
+    val coffee = Espresso(Milk(Milk(Foam())))
+    coffee.add()
 }
