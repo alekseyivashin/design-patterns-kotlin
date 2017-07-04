@@ -1,6 +1,7 @@
 import decorator.Espresso
 import decorator.Foam
 import decorator.Milk
+import factory.Factory
 import observer.Data
 import observer.DataSubject
 import observer.DisplayData
@@ -14,7 +15,7 @@ import strategy.StrategyPlus
  */
 
 fun main(args: Array<String>) {
-    testDecorator()
+    testFactory()
 }
 
 fun testObserver() {
@@ -39,4 +40,12 @@ fun testStrategy() {
 fun testDecorator() {
     val coffee = Espresso(Milk(Milk(Foam())))
     coffee.add()
+}
+
+fun testFactory() {
+    val factory = Factory()
+    var product = factory.getProduct(Factory.ProductType.COFFEE)
+    println(product?.getName())
+    product = factory.getProduct(Factory.ProductType.TEA)
+    println(product?.getName())
 }
